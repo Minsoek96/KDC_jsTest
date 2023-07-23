@@ -11,10 +11,21 @@ class App {
       $target,
     });
 
+    this.loading = new Loading({
+      $target,
+    });
+
     this.searchInput = new SearchInput({
       $target,
       onSearch: (keyword) => {
-        api.fetchCats(keyword).then(({ data }) => this.setState(data));
+        this.loading.show();
+        api
+          .fetchCats(keyword)
+          .then(({ data }) => {
+            this.setState(data);
+            this.loading.hide();
+          })
+          .catch((error) => this.loading.hide());
       },
     });
 

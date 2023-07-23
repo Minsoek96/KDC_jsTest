@@ -7,8 +7,8 @@ class DarkThemeToggle {
     this.initTheme();
 
     this.$DarkThemeToggle.addEventListener("click", (e) => {
-      const isMode = e.target.checked;
-      this.setTheme(isMode);
+      const isDark = e.target.checked;
+      this.setTheme(isDark);
     });
   }
   initTheme() {
