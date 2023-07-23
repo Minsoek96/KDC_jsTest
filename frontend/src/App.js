@@ -44,7 +44,7 @@ class App {
       $target,
       initialData: this.data,
       onClick: (image) => {
-        this.imageInfo.setState({
+        this.imageInfo.showDetail({
           visible: true,
           image,
         });

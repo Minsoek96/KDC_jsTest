@@ -9,11 +9,33 @@ class ImageInfo {
     $target.appendChild($imageInfo);
 
     this.data = data;
-
     this.render();
+
+    this.$imageInfo.addEventListener("click", (e) => {
+      if (
+        e.target.classList.contains("close") ||
+        e.target.classList.contains("ImageInfo")
+      ) {
+        $imageInfo.style.display = "none";
+      }
+    });
+  }
+
+  showDetail(data) {
+    api
+      .fetchDetailCat(data.image.id)
+      .then((cat) => this.setState({ visible: true, image: cat.data }));
+  }
+
+  closeModal() {
+    this.setState({
+      visible: false,
+      data: this.data,
+    });
   }
 
   setState(nextData) {
+    console.log(nextData);
     this.data = nextData;
     this.render();
   }
@@ -21,6 +43,7 @@ class ImageInfo {
   render() {
     if (this.data.visible) {
       const { name, url, temperament, origin } = this.data.image;
+      console.log(this.data);
 
       this.$imageInfo.innerHTML = `
         <div class="content-wrapper">
