@@ -107,6 +107,14 @@ body * {
   font-size: 100px;
 }
 
+.RandomBtn {
+  border-radius: 12px;
+  background-color: red;
+  width: 100%;
+  font-size: 32px;
+  cursor: pointer; 
+}
+
 @media screen and (max-width: 992px) {
   .SearchResult {
     grid-template-columns: repeat(3, minmax(250px, 1fr));

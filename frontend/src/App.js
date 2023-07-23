@@ -29,6 +29,17 @@ class App {
       },
     });
 
+    this.randomBtn = new RandomBtn({
+      $target,
+      onClick: () => {
+        this.loading.show();
+        api.fetchRandomCats().then(({ data }) => {
+          this.setState(data);
+          this.loading.hide();
+        });
+      },
+    });
+
     this.searchResult = new SearchResult({
       $target,
       initialData: this.data,
