@@ -115,6 +115,13 @@ body * {
   cursor: pointer; 
 }
 
+.KeyWordHistory_Item:hover,
+.KeyWordHistory_Item:active{
+  background-color: red;
+}
+
+
+
 @media screen and (max-width: 992px) {
   .SearchResult {
     grid-template-columns: repeat(3, minmax(250px, 1fr));

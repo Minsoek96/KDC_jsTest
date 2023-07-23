@@ -16,7 +16,7 @@ class ImageInfo {
         e.target.classList.contains("close") ||
         e.target.classList.contains("ImageInfo")
       ) {
-        $imageInfo.style.display = "none";
+        this.closeModal();
       }
     });
   }

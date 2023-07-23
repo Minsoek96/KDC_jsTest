@@ -27,6 +27,23 @@ class App {
           })
           .catch((error) => this.loading.hide());
       },
+      onClick: () => {
+        this.keyWordHistory.initHistory();
+      },
+    });
+
+    this.keyWordHistory = new KeywordHistory({
+      $target,
+      onSearch: (keyword) => {
+        this.loading.show();
+        api
+          .fetchCats(keyword)
+          .then(({ data }) => {
+            this.setState(data);
+            this.loading.hide();
+          })
+          .catch((error) => this.loading.hide());
+      },
     });
 
     this.randomBtn = new RandomBtn({
