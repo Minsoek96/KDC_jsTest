@@ -4,9 +4,15 @@
   font-weight: normal;
   font-style: normal;
 }
+:root[color-mode='dark'] {
+  --bkColor: #000;
+  --whiteColor: #fff;
+}
 
 html {
   box-sizing: border-box;
+  background-color: var(--bkColor);
+  color: var(--whiteColor);
 }
 
 body * {
