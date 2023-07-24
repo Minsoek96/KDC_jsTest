@@ -69,12 +69,12 @@ class App {
           image,
         });
       },
-      onAddFetch: (page) => {
+      onNextPage: (page) => {
         this.loading.show();
         api
           .fetchAddCats(page)
           .then(({ data }) => {
-            this.setState(data);
+            this.setState(this.data.concat(data));
             this.loading.hide();
           })
           .catch((error) => this.loading.hide());

@@ -4,7 +4,7 @@ class SearchResult {
   onClick = null;
   page = 2;
 
-  constructor({ $target, initialData, onClick, onAddFetch}) {
+  constructor({ $target, initialData, onClick, onNextPage }) {
     this.$searchResult = document.createElement("div");
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
@@ -19,7 +19,7 @@ class SearchResult {
         window.scrollY + window.innerHeight >=
         document.documentElement.scrollHeight;
       if (isScrollAtBottom) {
-        onAddFetch(this.page);
+        onNextPage(this.page);
         this.page++
       }
     });
