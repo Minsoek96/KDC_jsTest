@@ -2,8 +2,9 @@ class SearchResult {
   $searchResult = null;
   data = null;
   onClick = null;
+  page = 2;
 
-  constructor({ $target, initialData, onClick }) {
+  constructor({ $target, initialData, onClick, onAddFetch}) {
     this.$searchResult = document.createElement("div");
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
@@ -12,6 +13,16 @@ class SearchResult {
     this.onClick = onClick;
 
     this.render();
+
+    window.addEventListener("scroll", (e) => {
+      const isScrollAtBottom =
+        window.scrollY + window.innerHeight >=
+        document.documentElement.scrollHeight;
+      if (isScrollAtBottom) {
+        onAddFetch(this.page);
+        this.page++
+      }
+    });
   }
 
   setState(nextData) {
@@ -22,7 +33,7 @@ class SearchResult {
   render() {
     this.$searchResult.innerHTML = this.data
       .map(
-        cat => `
+        (cat) => `
           <div class="item">
             <img src=${cat.url} alt=${cat.name} />
           </div>

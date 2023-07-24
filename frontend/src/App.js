@@ -50,10 +50,13 @@ class App {
       $target,
       onClick: () => {
         this.loading.show();
-        api.fetchRandomCats().then(({ data }) => {
-          this.setState(data);
-          this.loading.hide();
-        });
+        api
+          .fetchRandomCats()
+          .then(({ data }) => {
+            this.setState(data);
+            this.loading.hide();
+          })
+          .catch((error) => this.loading.hide());
       },
     });
 
@@ -65,6 +68,16 @@ class App {
           visible: true,
           image,
         });
+      },
+      onAddFetch: (page) => {
+        this.loading.show();
+        api
+          .fetchAddCats(page)
+          .then(({ data }) => {
+            this.setState(data);
+            this.loading.hide();
+          })
+          .catch((error) => this.loading.hide());
       },
     });
 

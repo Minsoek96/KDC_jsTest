@@ -17,6 +17,7 @@ class SearchInput {
           ...store.getStorage("history"),
         ]);
       }
+      store.setStorage("lastHistory", [e.target.value]);
     });
 
     $searchInput.addEventListener("click", (e) => {
