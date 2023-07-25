@@ -14,16 +14,15 @@ class SearchResult {
 
     this.render();
 
-    window.addEventListener("scroll", (e) => {
-      const isScrollAtBottom =
-        window.scrollY + window.innerHeight >=
-        document.documentElement.scrollHeight;
-      if (isScrollAtBottom) {
-        onNextPage(this.page);
-        this.page++
-      }
-    });
-    
+    // window.addEventListener("scroll", (e) => {
+    //   const isScrollAtBottom =
+    //     window.scrollY + window.innerHeight >=
+    //     document.documentElement.scrollHeight;
+    //   if (isScrollAtBottom) {
+    //     onNextPage(this.page);
+    //     this.page++;
+    //   }
+    // });
   }
 
   setState(nextData) {
@@ -31,12 +30,24 @@ class SearchResult {
     this.render();
   }
 
+  lo = new IntersectionObserver((items, observer) => {
+    items.forEach((item, index) => {
+      // 아이템이 화면에 보일때 
+      if(item.isIntersecting){
+
+        // 마지막 요소를 찾아낸다
+
+        // 마지막 요소라면? nextPage 호출
+      }
+    });
+  });
+
   render() {
     this.$searchResult.innerHTML = this.data
       .map(
-        (cat) => `
-          <div class="item">
-            <img src=${cat.url} alt=${cat.name} />
+        (cat, index) => `
+          <div class="item" data-index =${index}>
+            <img src="https://via.placeholder.com/200x300/" data-src=${cat.url} alt=${cat.name} />
           </div>
         `
       )
@@ -46,6 +57,8 @@ class SearchResult {
       $item.addEventListener("click", () => {
         this.onClick(this.data[index]);
       });
+
+      this.lo.observe($item);
     });
   }
 }

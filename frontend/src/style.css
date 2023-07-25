@@ -88,6 +88,8 @@ body * {
 
 .ImageInfo .content-wrapper img {
   width: 100%;
+  min-height: 300px;
+  min-width: 200px;
 }
 
 .Loading {
