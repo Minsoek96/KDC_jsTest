@@ -11,6 +11,7 @@ class SearchResult {
 
     this.data = initialData;
     this.onClick = onClick;
+    this.onNextPage = onNextPage;
 
     this.render();
 
@@ -32,11 +33,16 @@ class SearchResult {
 
   lo = new IntersectionObserver((items, observer) => {
     items.forEach((item, index) => {
-      // 아이템이 화면에 보일때 
-      if(item.isIntersecting){
-
+      // 아이템이 화면에 보일때
+      if (item.isIntersecting) {
+        let targetImg = item.target.querySelector('img')
+        targetImg.src = targetImg.dataset.src
         // 마지막 요소를 찾아낸다
-
+        let dataIndex = Number(item.target.dataset.index);
+        if (dataIndex === this.data.length - 1) {
+          this.onNextPage(this.page);
+          this.page++;
+        }
         // 마지막 요소라면? nextPage 호출
       }
     });
@@ -47,7 +53,7 @@ class SearchResult {
       .map(
         (cat, index) => `
           <div class="item" data-index =${index}>
-            <img src="https://via.placeholder.com/200x300/" data-src=${cat.url} alt=${cat.name} />
+            <img src="src/utils/dummy.png" data-src=${cat.url} alt=${cat.name} />
           </div>
         `
       )
