@@ -22,7 +22,7 @@ class App {
         api
           .fetchCats(keyword)
           .then(({ data }) => {
-            this.setState(data);
+            this.setState(data ? data : []);
             this.loading.hide();
           })
           .catch((error) => this.loading.hide());
@@ -39,7 +39,7 @@ class App {
         api
           .fetchCats(keyword)
           .then(({ data }) => {
-            this.setState(data);
+            this.setState(data ? data : []);
             this.loading.hide();
           })
           .catch((error) => this.loading.hide());
@@ -53,7 +53,7 @@ class App {
         api
           .fetchRandomCats()
           .then(({ data }) => {
-            this.setState(data);
+            this.setState(data ? data : []);
             this.loading.hide();
           })
           .catch((error) => this.loading.hide());
@@ -74,7 +74,7 @@ class App {
         api
           .fetchAddCats(page)
           .then(({ data }) => {
-            this.setState(this.data.concat(data));
+            this.setState(this.data.concat(data ? data : []));
             this.loading.hide();
           })
           .catch((error) => this.loading.hide());
