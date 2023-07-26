@@ -6,3 +6,5 @@ const store = {
     return localStorage.setItem(key, JSON.stringify(data));
   },
 };
+
+export default store;

@@ -33,3 +33,4 @@ class Loading {
       : (this.$Loading.style.display = "none");
   }
 }
+export default Loading;

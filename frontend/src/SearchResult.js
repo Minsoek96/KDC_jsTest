@@ -49,15 +49,15 @@ class SearchResult {
   });
 
   render() {
-    this.$searchResult.innerHTML = this.data
-      .map(
+    this.$searchResult.innerHTML = this.data && this.data.length > 0 ? 
+      this.data.map(
         (cat, index) => `
           <div class="item" data-index =${index}>
             <img src="src/utils/dummy.png" data-src=${cat.url} alt=${cat.name} />
           </div>
         `
       )
-      .join("");
+      .join("") : `<p>검색 데이터 찾지 못했습니다.</p>` 
 
     this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
       $item.addEventListener("click", () => {
@@ -68,3 +68,5 @@ class SearchResult {
     });
   }
 }
+
+export default SearchResult

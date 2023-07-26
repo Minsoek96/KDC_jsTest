@@ -1,4 +1,12 @@
 console.log("app is running!");
+import DarkThemeToggle from "./DarkThemeToggle.js";
+import SearchInput from "./SearchInput.js";
+import KeywordHistory from "./KeywordHistory.js";
+import RandomBtn from "./RandomBtn.js";
+import SearchResult from "./SearchResult.js";
+import ImageInfo from "./ImageInfo.js";
+import Loading from "./Loading.js";
+import api from "./api.js";
 
 class App {
   $target = null;
@@ -96,3 +104,4 @@ class App {
     this.searchResult.setState(nextData);
   }
 }
+export default App;
